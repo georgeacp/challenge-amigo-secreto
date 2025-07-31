@@ -25,6 +25,9 @@ function agregarAmigo() {
   // Limpiar el campo de entrada
   document.getElementById("amigo").value = "";
 
+  // Habilitar el botón de sorteo si hay amigos
+  habilitarBoton();
+
   // Actualizar la lista
   mostrarAmigos();
 }
@@ -69,4 +72,19 @@ function sortearAmigo() {
 
   // Limpiar lista para nuevos nombres
   amigos = [];
+
+  // Deshabilitar el botón de sorteo
+  habilitarBoton();
+}
+
+function habilitarBoton() {
+  const boton = document.getElementById("sortearAmigo");
+  if (amigos.length > 0) {
+    boton.disabled = false;
+    boton.classList.remove("button-disable");
+    boton.classList.add("button-draw");
+  } else {
+    boton.disabled = true;
+    boton.classList.add("button-disable");
+  }
 }
