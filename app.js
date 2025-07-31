@@ -3,10 +3,10 @@
 let amigos = [];
 
 function agregarAmigo() {
-  // Obtener el valor del input y eliminamos espacios en blanco
+  // Capturar el valor del campo de entrada
   let amigo = document.getElementById("amigo").value.trim();
 
-  // Validar que el campo no este vacio
+  // Validar la entrada
   if (amigo === "") {
     alert("Por favor, inserte un nombre.");
     return;
@@ -19,10 +19,10 @@ function agregarAmigo() {
     return;
   }
 
-  // Agregar el nombre al array
+  // Actualizar el array de amigos:
   amigos.push(amigo);
 
-  // Limpiar el input
+  // Limpiar el campo de entrada
   document.getElementById("amigo").value = "";
 
   // Actualizar la lista
@@ -32,15 +32,41 @@ function agregarAmigo() {
 function mostrarAmigos() {
   const listaAmigos = document.getElementById("listaAmigos");
 
-  // Limpiar la lista antes de volver a mostrar
+  // Limpiar la lista existente
   listaAmigos.innerHTML = "";
 
   // Iterar sobre el arreglo
   for (let i = 0; i < amigos.length; i++) {
     const li = document.createElement("li");
     li.textContent = amigos[i];
+    //Agregar elementos a la lista
     listaAmigos.appendChild(li);
   }
+
+  document.getElementByI;
 }
 
-console.log(amigos);
+function sortearAmigo() {
+  // Validad que haya amigos disponibles
+  if (amigos.length == 0) {
+    alert("La lista esta vacia");
+    return;
+  }
+
+  // Generar un índice aleatorio
+  let indice = Math.floor(Math.random() * amigos.length);
+
+  //Obtener el nombre sorteado
+  let ganador = amigos[indice];
+
+  // Mostrar el resultado
+  listaAmigos.innerHTML = "";
+  const li = document.createElement("li");
+  listaAmigos.appendChild(li);
+  li.style.color = "green";
+  li.style.fontWeight = "bold";
+  li.textContent = `El amigos secreto sorteado es: ${ganador}`;
+
+  // Limpiar lista para nuevos nombres
+  amigos = [];
+}
